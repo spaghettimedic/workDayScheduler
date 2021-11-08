@@ -52,14 +52,34 @@ var auditTask = () => {
     }
 };
 
+// .task div was clicked to make it editable
+$(".container").on("click", ".task", function() {
+    var text = $(this).text().trim();
+    var textInput = $("<textarea>").addClass("form-control col-10").val(text);
+    $(this).replaceWith(textInput);
+    textInput.trigger("focus");
+});
+
+// save button was clicked to save edited .task div and change back into a <div> from a <textarea> element
+$(".container").on("click", ".btn", function() {
+    var text = $(".form-control").val().trim();
+    var editedTask = $("<div>").addClass("task col-10 py-4 border-top border-bottom border-white height-66 bg-secondary").text(text);
+
+    $(".form-control").replaceWith(editedTask);
+});
+
+// clears all tasks on new day and on button click
+
+// save button was clicked to save new textInput and make the <textarea> back into a <div>
+$("")
+
 displayToday();
 createTimeBlocks();
 auditTask();
+// auditTask() is called on page load and every hour on the hour via setInterval()
 setInterval(function() {
     var mins = new Date().getMinutes();
     if (mins == "00") {
-        $(taskEl).each(function() {
-            auditTask();
-        });
+        auditTask();
     }
-}, 1000);
+}, 1000 * 60);

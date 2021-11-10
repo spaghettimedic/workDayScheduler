@@ -44,13 +44,13 @@ var loadTasks = function() {
     savedTasks = JSON.parse(localStorage.getItem("savedTasks"));
 };
 
-// var saveTasks = function () {
-//     $(".task").each(function() {
-//         savedTasks.push(taskEl.text());
-//     });
-//     console.log(savedTasks);
-//     localStorage.setItem("savedTasks", JSON.stringify(savedTasks));
-// };
+var saveTasks = function () {
+    $(".task").each(function() {
+        savedTasks.push(taskEl.text());
+    });
+    console.log(savedTasks);
+    localStorage.setItem("savedTasks", JSON.stringify(savedTasks));
+};
 
 var auditTask = function() {
     // has to iterate through each taskEl and number of taskEl === number of taskTimes so we can iterate as many times as indices of taskTimes array
@@ -88,10 +88,10 @@ $(".container").on("click", ".btn", function() {
     var text = $("#" + id).val();
     var editedTask = $("<div>").addClass("task text-white col-10 py-4 border-top border-bottom border-white height-66").attr("id", id).text(text);
 
-    $(this).siblings("textarea").replaceWith(editedTask);
-    // savedTasks = ($(".task").text());
-    // console.log(savedTasks);
-    // localStorage.setItem("savedTasks", JSON.stringify(savedTasks));
+    $(this).siblings("#" + id).replaceWith(editedTask);
+    savedTasks.push((editedTask).text());
+    console.log(savedTasks);
+    localStorage.setItem("savedTasks", JSON.stringify(savedTasks));
     auditTask();
 });
 

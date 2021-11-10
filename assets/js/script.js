@@ -95,7 +95,7 @@ $(".container").on("click", ".btn", function() {
     auditTask();
 });
 
-// clears all tasks on new day and on button click
+// clears all tasks on button click
 $(".container").on("click", "#delete", function() {
     $(".task").empty();
     savedTasks = [];

@@ -18,3 +18,5 @@ The landing page of Work Day Scheduler will display the current day, as well as 
 * All tasks can be cleared at once by clicking the "CLEAR ALL TASKS" button at the bottom of the page. This clears every task field and the localStorage array for them.
 
 ![plot](./assets/images/workDayScheduler-clearAllTasks.png)
+
+Deployed application link: https://spaghettimedic.github.io/workDayScheduler/
